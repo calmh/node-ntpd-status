@@ -1,4 +1,4 @@
-ntpd_status
+ntpd-status [![build status](https://secure.travis-ci.org/calmh/node-ntpd-status.png)](http://travis-ci.org/calmh/node-ntpd-status)
 ===========
 
 Ask the local `ntpd` for status data, using `ntpdc`.
