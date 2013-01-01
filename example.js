@@ -15,6 +15,7 @@ ntpd.ntpdc('loopinfo', function (err, result) {
     if (err)
         throw err;
 
+    console.log('loopinfo from localhost:');
     for (var key in result) {
         /*
          * 'key' is the underscored variable name as reported by ntpdc
@@ -23,4 +24,21 @@ ntpd.ntpdc('loopinfo', function (err, result) {
          */
         console.log(key + ': ' + result[key].value + ' ' + result[key].unit);
     }
+    console.log();
 });
+
+/*
+ * Similarly, print kerninfo from the remote host anto.nym.se.
+ */
+
+ntpd.ntpdc('kerninfo', 'anto.nym.se', function (err, result) {
+    if (err)
+        throw err;
+
+    console.log('kerninfo from anto.nym.se:');
+    for (var key in result) {
+        console.log(key + ': ' + result[key].value + ' ' + result[key].unit);
+    }
+    console.log();
+});
+

@@ -1,7 +1,7 @@
 {
   "author": "Jakob Borg <jakob@nym.se> (http://nym.se/)",
   "name": "ntpd_status",
-  "description": "Get status information from ntpd",
+  "description": "Get status information from a local or remote ntpd",
   "version": "1.0.0",
   "homepage": "https://github.com/calmh/node-ntpd-status",
   "repository": {

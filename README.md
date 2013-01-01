@@ -1,13 +1,13 @@
 ntpd-status [![build status](https://secure.travis-ci.org/calmh/node-ntpd-status.png)](http://travis-ci.org/calmh/node-ntpd-status)
 ===========
 
-Ask the local `ntpd` for status data, using `ntpdc`.
+Ask a local or remote `ntpd` for status data, using `ntpdc`.
 
 Example
 -------
 
 ```javascript
-var ntpd = require('./lib/ntpd_status');
+var ntpd = require('ntpd_status');
 
 /*
  * Get the results of 'ntpdc -c loopinfo'.
@@ -24,6 +24,7 @@ ntpd.ntpdc('loopinfo', function (err, result) {
     if (err)
         throw err;
 
+    console.log('loopinfo from localhost:');
     for (var key in result) {
         /*
          * 'key' is the underscored variable name as reported by ntpdc
@@ -32,6 +33,22 @@ ntpd.ntpdc('loopinfo', function (err, result) {
          */
         console.log(key + ': ' + result[key].value + ' ' + result[key].unit);
     }
+    console.log();
+});
+
+/*
+ * Similarly, print kerninfo from the remote host anto.nym.se.
+ */
+
+ntpd.ntpdc('kerninfo', 'anto.nym.se', function (err, result) {
+    if (err)
+        throw err;
+
+    console.log('kerninfo from anto.nym.se:');
+    for (var key in result) {
+        console.log(key + ': ' + result[key].value + ' ' + result[key].unit);
+    }
+    console.log();
 });
 ```
 
