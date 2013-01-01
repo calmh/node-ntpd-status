@@ -20,7 +20,7 @@ describe('ntpdc-status', function () {
             'jitter exceeded:      0',
             'stability exceeded:   0',
             'calibration errors:   0'].join('\n');
-        var res = ntpd_status.parse(ntpdc_kerninfo);
+        var res = ntpd_status._parse(ntpdc_kerninfo);
 
         should.exist(res);
         should.exist(res.pll_offset);
